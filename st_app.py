@@ -29,18 +29,19 @@ st.map(df_new)
 
 st.write('\n')
 
-# model result plot
+# plot LR model result
 if model_name == "Linear Regression":
     model_lr = load('model/regr.joblib')
     y_pred_lr = model_lr.predict(X_test)
     st.write( 'R2 Error of ', model_name, 'is ', round(r2_score(y_test, y_pred_lr), 3))
     chart_plot(model_name, y_pred_lr, number_samples)
-    
+# plot RF model result    
 elif model_name == "Random Forest":
     model_rf = load('model/rf.joblib')
     y_pred_rf = model_rf.predict(X_test)
     st.write( 'R2 Error of ', model_name, 'is ', round(r2_score(y_test, y_pred_rf), 3))
     chart_plot(model_name, y_pred_rf, number_samples)
+# compare models
 else:
     model_lr = load('model/regr.joblib')
     y_pred_lr = model_lr.predict(X_test)
